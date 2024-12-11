@@ -1,0 +1,50 @@
+body {
+    font-family: 'Imperial Script', cursive;
+    background-color: #f0f8ff;
+    text-align: center;
+    padding: 20px;
+}
+
+.container1 {
+    border: 2px solid #000;
+    border-radius: 10px;
+    margin: 40px auto;
+    padding: 20px;
+    max-width: 600px;
+    background-color: red;
+}
+
+.container2 {
+    border: 2px solid #000;
+    border-radius: 10px;
+    margin: 40px auto;
+    padding: 20px;
+    max-width: 600px;
+    background-color: #ffff99;
+}
+
+.container3 {
+    border: 2px solid #000;
+    border-radius: 10px;
+    margin: 40px auto;
+    padding: 20px;
+    max-width: 600px;
+    background-color: green;
+}
+
+p {
+    font-size: 32px;
+    margin: 1px 0;
+}
+
+h1, h2 {
+    margin: 10px 0;
+}
+
+h1 {
+    font-size: 48px;
+}
+
+h2 {
+    font-size: 36px;
+}
