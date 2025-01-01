@@ -1,0 +1,33 @@
+body {
+    background-color: #0066cc;
+    font-family: Hack, monospace; 
+    color: #15cfea;
+}
+
+.socials {
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    font-size: 45px;
+    gap: 2px;
+}
+
+.text-container {
+    position: absolute;
+    transform: translateY(-50%);
+    left: 200px;
+    top: 50%;
+}
+
+.waka-container {
+    position: absolute;
+    transform: translateY(-50%);
+    right: 200px;
+    top: 50%;
+}
+
+.list {
+    font-size: 20px;
+}
