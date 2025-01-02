@@ -21,13 +21,7 @@ body {
     top: 50%;
 }
 
-.waka-container {
-    position: absolute;
-    transform: translateY(-50%);
-    right: 200px;
-    top: 50%;
-}
-
-.list {
+.list ul li {
     font-size: 20px;
+    display: none;
 }
