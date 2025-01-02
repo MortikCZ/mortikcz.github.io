@@ -2,10 +2,9 @@
 <html>
     <head>
         <title>TheMortyCZ</title>
-        <link rel="stylesheet" type="text/css" href="assets/style.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
         <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3/build/web/hack.css">
         <link href="https://cdn.materialdesignicons.com/5.8.55/css/materialdesignicons.min.css" rel="stylesheet">
-        <link rel="icon" type="image/png" href="assets/favicon.ico">
     </head>
     <body>
         <div class="socials">
@@ -15,19 +14,51 @@
         </div>
 
         <div class="text-container">
-            <h2>Hi, I am Morty (Lukáš)!</h2>
+            <h2 id="typewriter">Hi, I am Morty (Lukáš)!</h2>
             
             <div class="list">
                 <ul>
                     <li>IT Student <span class="mdi mdi-laptop"></span></li>
                     <li>I love Python <span class="mdi mdi-language-python"></span></li>
-                    <li>Computer networking enthusiast <span class="mdi mdi-switch"></li>
+                    <li>Computer networking enthusiast <span class="mdi mdi-switch"></span></li>
                     <li>Windows <span class="mdi mdi-microsoft-windows"></span> and Ubuntu <span class="mdi mdi-ubuntu"></span> user</li>
                 </ul>
             </div>
-        </div>
+        </div>        
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const text = document.getElementById('typewriter').innerText;
+                const speed = 100; 
+                let i = 0;
+                document.getElementById('typewriter').innerText = '';
 
-        <div class="waka-container">
-            <img src="https://github-readme-stats.vercel.app/api/wakatime?username=U080XB80EKB&api_domain=waka.hackclub.com&bg_color=0066cc&title_color=15cfea&icon_color=&text_color=ffffff&custom_title=Wakatime%20Stats&layout=compact">
+                function typeWriter() {
+                    if (i < text.length) {
+                        document.getElementById('typewriter').innerHTML += text.charAt(i) === ' ' ? '&nbsp;' : text.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, speed);
+                    } else {
+                        showListItems();
+                    }
+                }
+
+                function showListItems() {
+                    const listItems = document.querySelectorAll('.list ul li');
+                    let j = 0;
+
+                    function showNextItem() {
+                        if (j < listItems.length) {
+                            listItems[j].style.display = 'list-item';
+                            j++;
+                            setTimeout(showNextItem, speed);
+                        }
+                    }
+
+                    showNextItem();
+                }
+
+                typeWriter();
+            });
+        </script>
     </body>
 </html>
