@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>Mapa s místy</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="title">Mapa zajímavých míst v Praze</div>
+
+<div class="main-container">
+  <div id="map"></div>
+  <div class="sidebar" id="sidebar">
+    <h2>Seznam míst</h2>
+    <ul id="places-list"></ul>
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+  const map = L.map('map').setView([50.0877708, 14.4205094], 13 );
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap'
+  }).addTo(map);
+
+  const body = [
+    { lat: 50.0898689, lng: 14.4000936, popis: "Pražský hrad"},
+    { lat: 50.0865831, lng: 14.4102561, popis: "Karlův most"},
+    { lat: 50.0877708, lng: 14.4205094, popis: "Staroměstské náměstí"},
+    { lat: 50.0908936, lng: 14.4006036, popis: "Katedrála sv. Víta, Václava a Vojtěcha"},
+    { lat: 50.0814556, lng: 14.4273806, popis: "Václavské náměstí"},
+    { lat: 50.0835400, lng: 14.3950800, popis: "Petřínská rozhledna"},
+    { lat: 50.0955706, lng: 14.4185161, popis: "Letenské sady"},
+    { lat: 50.0642378, lng: 14.4189017, popis: "Vyšehrad"},
+    { lat: 50.1059181, lng: 14.4194811, popis: "Stromovka"},
+    { lat: 50.0802392, lng: 14.4413628, popis: "Riegrovy sady"},
+    { lat: 50.0788906, lng: 14.4309511, popis: "Národní muzeum"},
+    { lat: 50.1067775, lng: 14.4470300, popis: "Centrum současného umění DOX"},
+    { lat: 50.1013506, lng: 14.4324547, popis: "Národní galerie"},
+    { lat: 50.0882336, lng: 14.4105175, popis: "Muzeum Franze Kafky"},
+    { lat: 50.0810406, lng: 14.4511250, popis: "Žižkovská televizní věž"},
+    { lat: 50.0694150, lng: 14.4114439, popis: "Smíchovská náplavka"},
+    { lat: 50.0839439, lng: 14.4077011, popis: "Ostrov Kampa"},
+    { lat: 50.0692753, lng: 14.4043547, popis: "Manifesto Market Anděl"}
+  ];
+
+  const markers = [];
+  const originalView = { lat: 50.0877708, lng: 14.4205094, zoom: 13 };
+
+  const list = document.getElementById("places-list");
+
+  body.forEach((bod, index) => {
+    const marker = L.marker([bod.lat, bod.lng]).addTo(map).bindPopup(bod.popis);
+    markers.push(marker);
+
+    marker.on("popupclose", () => {
+      map.setView([originalView.lat, originalView.lng], originalView.zoom);
+    });
+
+    const li = document.createElement("li");
+    li.textContent = bod.popis;
+    li.addEventListener("click", () => {
+      map.setView([bod.lat, bod.lng], 15);
+      marker.openPopup();
+    });
+
+    list.appendChild(li);
+  });
+</script>
+
+</body>
+</html>
